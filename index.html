@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dear Momo ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;600;700&family=Hind+Siliguri:wght@400;500&display=swap');
+:root{--pink:#e98eaa;--deep:#b94d70;--cream:#fff8f2;--ink:#754455}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:'Playfair Display',serif;background:radial-gradient(circle at 20% 15%,#fff5f8,transparent 35%),linear-gradient(135deg,#fce1e9,#f7c8d8 55%,#fce9e2);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.2;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:19px 19px}
+.page{display:none;min-height:100vh;padding:28px 16px;align-items:center;justify-content:center;flex-direction:column;text-align:center;position:relative}
+.page.active{display:flex;animation:fade .65s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+h1{font-size:clamp(2.2rem,7vw,4.3rem);margin:0 0 12px;color:#a83f64}
+.subtitle{font-size:clamp(1.1rem,3vw,1.55rem);margin:0 0 28px}
+button{font:600 1rem 'Playfair Display',serif;border:0;border-radius:999px;padding:13px 28px;cursor:pointer;box-shadow:0 7px 18px #a7476630;transition:transform .2s,box-shadow .2s}
+button:hover{transform:translateY(-2px);box-shadow:0 10px 22px #a7476645}
+.yes{background:linear-gradient(135deg,#e56f98,#bd456f);color:white}
+.no{background:#fff8fa;color:#a34b68;border:1px solid #efb7c9;position:relative;transition:transform .28s ease,scale .28s ease;touch-action:manipulation}
+.actions{display:flex;gap:16px;justify-content:center;align-items:center;min-height:58px}
+.hint{font-size:.9rem;opacity:.75;margin-top:20px}
+.decor{position:absolute;font-size:25px;opacity:.65;animation:float 5s ease-in-out infinite;pointer-events:none}
+@keyframes float{50%{transform:translateY(-16px) rotate(9deg)}}
+#letterPage{padding-top:22px;padding-bottom:34px}
+.scene{width:min(92vw,620px);height:460px;position:relative;margin:4px auto 12px;perspective:1000px}
+.envelope{position:absolute;width:min(86vw,440px);height:275px;left:50%;bottom:25px;transform:translateX(-50%);z-index:3;cursor:pointer}
+.env-back{position:absolute;inset:0;background:linear-gradient(145deg,#d982a0,#c65e81);border-radius:8px 8px 13px 13px;box-shadow:0 18px 35px #873c5838}
+.env-pocket{position:absolute;inset:0;background:linear-gradient(145deg,#f3b4c7,#df88a5);clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);border-radius:0 0 12px 12px;z-index:4}
+.env-flap{position:absolute;inset:0 0 auto;height:64%;background:linear-gradient(160deg,#f8c8d6,#dc829f);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transform:rotateX(0);transition:transform .9s ease;z-index:5;filter:drop-shadow(0 4px 3px #8b405333)}
+.seal{position:absolute;z-index:6;left:50%;top:48%;transform:translate(-50%,-50%);width:43px;height:43px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f9d3df,#bd456e);display:grid;place-items:center;color:#fff;font-size:22px;box-shadow:0 3px 9px #84334b55;transition:opacity .25s}
+.letter{position:absolute;z-index:2;width:min(82vw,390px);height:390px;left:50%;bottom:48px;transform:translate(-50%,155px) scale(.92);opacity:0;overflow:hidden;border:1px solid #e8b9a8;border-radius:4px;background:linear-gradient(120deg,rgba(255,255,255,.35),transparent 30%),#fff8ec;box-shadow:0 9px 26px #87435a30;padding:24px 23px;text-align:left;transition:transform 1.25s cubic-bezier(.2,.75,.25,1),opacity .5s; background-image:linear-gradient(#d6a6a055 1px,transparent 1px),linear-gradient(90deg,#fff8ec,#fff1e8);background-size:100% 29px,100% 100%;background-position:0 20px,0 0}
+.letter:before{content:"";position:absolute;inset:9px;border:1px solid #e7c4b5;pointer-events:none}
+.letter-content{position:relative;z-index:1;height:100%;overflow:auto;white-space:pre-wrap;font-family:'Hind Siliguri',serif;font-size:14px;line-height:1.72;color:#754455;scrollbar-width:thin}
+.letter-content .english{font-family:'Great Vibes',cursive;font-size:25px;color:#a83f64}
+.scene.open .env-flap{transform:rotateX(180deg);z-index:1}
+.scene.open .seal{opacity:0}
+.scene.open .letter{transform:translate(-50%,-28px) scale(1);opacity:1;z-index:6}
+.scene.open .env-pocket{z-index:4}
+.scene.open .env-back{z-index:2}
+.letter-title{font-family:'Great Vibes',cursive;font-size:30px;color:#b94d70;margin-bottom:4px}
+.next{display:none;margin-top:10px;background:#fff;color:#ad496b;border:1px solid #edb4c7}
+.next.show{display:inline-block;animation:fade .5s ease}
+#galleryPage h1{font-size:clamp(2rem,6vw,3.4rem)}
+.gallery{width:min(92vw,760px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:14px auto 24px}
+.photo{background:#fffdfb;padding:10px 10px 14px;box-shadow:0 8px 20px #8c405026;transform:rotate(var(--r));transition:transform .25s}
+.photo:hover{transform:rotate(0) translateY(-5px) scale(1.02)}
+.photo img{width:100%;aspect-ratio:1/1;object-fit:cover;background:linear-gradient(135deg,#f7d4df,#fff0e8);display:block}
+.photo p{font-family:'Great Vibes',cursive;font-size:22px;margin:9px 0 0;color:#a74768}
+.final-card{background:#fff8f5c9;border:1px solid #f1c4d0;border-radius:22px;padding:35px 25px;max-width:540px;box-shadow:0 15px 40px #a7476820}
+.final-card h1{font-family:'Great Vibes',cursive;font-size:clamp(3rem,10vw,5rem)}
+@media(max-width:480px){.scene{height:430px}.envelope{height:240px;bottom:28px}.letter{height:355px;bottom:45px;padding:19px}.letter-content{font-size:12.5px}.gallery{gap:12px}.photo{padding:7px 7px 11px}.photo p{font-size:19px}}
+</style>
+</head>
+<body>
+<div class="decor" style="top:8%;left:8%">🌹</div><div class="decor" style="top:16%;right:9%;animation-delay:1s">♡</div><div class="decor" style="bottom:12%;left:12%;animation-delay:2s">🌸</div><div class="decor" style="bottom:9%;right:10%;animation-delay:1.5s">💕</div>
+<section class="page active" id="home">
+  <div style="font-size:42px;margin-bottom:10px">🌹</div>
+  <h1>Dear Momo ❤️</h1>
+  <p class="subtitle">Will You Be Mine Forever?</p>
+  <div class="actions"><button class="yes" onclick="openLetter()">YES ❤️</button><button class="no" id="noBtn">NO 🙈</button></div>
+  <p class="hint">I have something special to tell you…</p>
+</section>
+<section class="page" id="letterPage">
+  <h1 style="font-size:clamp(2rem,6vw,3.2rem);margin-bottom:0">A Letter For You 💌</h1>
+  <p class="hint" id="tapHint" style="margin:4px 0 0">Tap the envelope to open your letter 💌</p>
+  <div class="scene" id="scene">
+    <div class="letter" id="letter">
+      <div class="letter-content" id="typed"><div class="letter-title">My Dearest Momo, ❤️</div></div>
+    </div>
+    <div class="envelope" id="envelopeTap" role="button" tabindex="0" aria-label="Tap to open the letter" onclick="openEnvelope()" onkeydown="if(event.key==='Enter'||event.key===' ')openEnvelope()"><div class="env-back"></div><div class="env-flap"></div><div class="env-pocket"></div><div class="seal">❤</div></div>
+  </div>
+  <button class="next" id="nextBtn" onclick="showPage('galleryPage')">Next ❤️</button>
+</section>
+<section class="page" id="galleryPage">
+  <h1>Our Beautiful Memories 🌸</h1>
+  <p class="subtitle">Every picture holds a little piece of happiness.</p>
+  <div class="gallery">
+    <div class="photo" style="--r:-2deg"><img src="images/png.1.png" onerror="this.style.background='linear-gradient(135deg,#f3c4d3,#fff0e8)';this.removeAttribute('src')"><p>My favourite smile ❤️</p></div>
+    <div class="photo" style="--r:2deg"><img src="images/png.2.png" onerror="this.style.background='linear-gradient(135deg,#f7d7df,#fbe9df)';this.removeAttribute('src')"><p>Sweet moments 🌷</p></div>
+    <div class="photo" style="--r:1.5deg"><img src="images/png.3.png" onerror="this.style.background='linear-gradient(135deg,#f5cbd9,#fff1e8)';this.removeAttribute('src')"><p>Simply beautiful 💗</p></div>
+    <div class="photo" style="--r:-1.5deg"><img src="images/png.4.png" onerror="this.style.background='linear-gradient(135deg,#f8dce4,#f7c9d9)';this.removeAttribute('src')"><p>A lovely memory 🌹</p></div>
+    <div class="photo" style="--r:-2deg"><img src="images/png.5.png" onerror="this.style.background='linear-gradient(135deg,#f5c8d8,#fff0e8)';this.removeAttribute('src')"><p>My happiness ✨</p></div>
+    <div class="photo" style="--r:2deg"><img src="images/png.6.png" onerror="this.style.background='linear-gradient(135deg,#f7d7df,#fbe9df)';this.removeAttribute('src')"><p>Always special 💞</p></div>
+  </div>
+  <button class="yes" onclick="showPage('finalPage')">One Last Thing 💌</button>
+</section>
+<section class="page" id="finalPage">
+  <div class="final-card"><div style="font-size:38px">🌹💗🌹</div><h1>Forever Yours, Momo</h1><p style="font-size:1.2rem;line-height:1.7">You make ordinary moments feel beautiful.</p><p>With lots of love ❤️</p></div>
+</section>
+<script>
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active')}
+const noBtn=document.getElementById('noBtn');
+const actions=document.querySelector('.actions');
+let noScale=1, dodgeCount=0;
+function dodgeNo(){
+  dodgeCount++;
+  noScale=Math.max(.58,1-dodgeCount*.055);
+  const area=actions.getBoundingClientRect();
+  const btn=noBtn.getBoundingClientRect();
+  const maxX=Math.max(55,Math.min(145,(area.width-btn.width)/2+65));
+  const maxY=52;
+  let x=(Math.random()>.5?1:-1)*(45+Math.random()*maxX);
+  let y=(Math.random()-.5)*maxY*2;
+  noBtn.style.transform=`translate(${x}px,${y}px) scale(${noScale})`;
+}
+noBtn.addEventListener('pointerenter',dodgeNo);
+noBtn.addEventListener('pointerdown',(e)=>{e.preventDefault();dodgeNo()});
+noBtn.addEventListener('click',(e)=>{e.preventDefault();dodgeNo()});
+document.addEventListener('pointermove',(e)=>{
+  if(!document.getElementById('home').classList.contains('active')) return;
+  const r=noBtn.getBoundingClientRect();
+  const cx=r.left+r.width/2, cy=r.top+r.height/2;
+  if(Math.hypot(e.clientX-cx,e.clientY-cy)<75) dodgeNo();
+});
+const message=`প্রিয় Momo,
+
+জানো, কিছু মানুষ আমাদের জীবনে আসে, আর অজান্তেই সবকিছু একটু বেশি সুন্দর করে দেয়। তুমি আমার কাছে ঠিক তেমনই একজন।
+
+তোমার হাসি, তোমার কথা, তোমার ছোট ছোট অভিমান—সবকিছুই আমার কাছে অনেক স্পেশাল। তোমাকে নিয়ে ভাবলে অজান্তেই মুখে হাসি চলে আসে।
+
+আমি জানি না ভবিষ্যৎ আমাদের জন্য কী লিখে রেখেছে, কিন্তু আমি চাই আমাদের প্রতিটি সুন্দর মুহূর্তের গল্পে তুমি থাকো।
+
+Dear Momo,
+
+You are more special to me than words can explain. Your smile makes my day brighter, and your presence makes ordinary moments feel beautiful.
+
+I want to create countless beautiful memories with you, one day at a time.
+
+Will you hold my hand and make this beautiful journey even more special?
+
+With lots of love,
+Forever Yours ❤️`;
+let started=false;
+function openLetter(){showPage('letterPage')}
+function openEnvelope(){
+  if(started)return;
+  started=true;
+  document.getElementById('scene').classList.add('open');
+  document.getElementById('tapHint').textContent='A little message from my heart ❤️';
+  setTimeout(typeLetter,1450);
+}
+function typeLetter(){const el=document.getElementById('typed');let i=0;const title='<div class="letter-title">My Dearest Momo, ❤️</div>';function tick(){if(i<message.length){el.innerHTML=title+message.slice(0,++i).replace(/\n/g,'<br>');el.scrollTop=el.scrollHeight;setTimeout(tick,24)}else{document.getElementById('nextBtn').classList.add('show')}}tick()}
+</script>
+</body>
+</html>
