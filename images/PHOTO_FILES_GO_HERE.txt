@@ -1,9 +1,0 @@
-Place Momo's six photos in this folder and name them exactly:
-png.1.png
-png.2.png
-png.3.png
-png.4.png
-png.5.png
-png.6.png
-
-If your photos are JPG files, update the six image extensions in index.html to .jpg.
